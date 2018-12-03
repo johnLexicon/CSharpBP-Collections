@@ -19,13 +19,15 @@ namespace Acme.Biz.Tests
             // Arrange
             var currentProduct = new Product(1, "Saw", "");
             currentProduct.Cost = 50m;
-            var expected = 55m;
+            var expected = new OperationResult<decimal>(55m, string.Empty);
 
             // Act
             var actual = currentProduct.CalculateSuggestedPrice(10m);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Message, actual.Message);
+            Assert.AreEqual(expected.Result, actual.Result);
+
         }
 
         [TestMethod()]

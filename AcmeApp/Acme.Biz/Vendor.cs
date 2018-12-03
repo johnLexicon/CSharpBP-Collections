@@ -24,7 +24,7 @@ namespace Acme.Biz
         /// <param name="deliverBy">Requested delivery date.</param>
         /// <param name="instructions">Delivery instructions.</param>
         /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quantity,
+        public OperationResult<bool> PlaceOrder(Product product, int quantity,
                                             DateTimeOffset? deliverBy = null,
                                             string instructions = "standard delivery")
         {
@@ -61,13 +61,38 @@ namespace Acme.Biz
             {
                 success = true;
             }
-            var operationResult = new OperationResult(success, orderText);
+            var operationResult = new OperationResult<bool>(success, orderText);
             return operationResult;
         }
 
         public override string ToString()
         {
             return $"Vendor: {this.CompanyName} ({this.VendorId})";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null && obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
+            Vendor otherVendor = obj as Vendor;
+
+            if(otherVendor != null &&
+                this.VendorId == otherVendor.VendorId &&
+                this.CompanyName == otherVendor.CompanyName &&
+                this.Email == otherVendor.Email)
+            {
+                return true;
+            }
+
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
 
