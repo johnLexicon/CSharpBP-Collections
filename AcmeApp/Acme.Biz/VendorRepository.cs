@@ -65,6 +65,10 @@ namespace Acme.Biz
             };
         }
 
+
+        public bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Toy");
+
+
         public ICollection<Vendor> Retrieve()
         {
             if(_vendors == null)
