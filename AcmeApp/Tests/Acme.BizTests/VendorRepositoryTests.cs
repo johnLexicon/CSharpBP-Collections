@@ -121,9 +121,11 @@ namespace Acme.Biz.Tests
 
             //Act
             var vendors = repository.RetrieveAll();
-            var vendorQuery = from v in vendors
-                              where v.CompanyName.Contains("Toy")
-                              select v;
+            //var vendorQuery = from v in vendors
+            //                  where v.CompanyName.Contains("Toy")
+            //                  select v;
+
+            var vendorQuery = vendors.Where(repository.FilterCompanies);
 
             //Assert
             CollectionAssert.AreEqual(expected, vendorQuery.ToList<Vendor>());
