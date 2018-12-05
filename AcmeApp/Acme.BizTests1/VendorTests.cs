@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Acme.Biz.Tests
 {
     [TestClass()]
-    public class VendorRepositoryTests
+    public class VendorTests
     {
 
     }

@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Win", "Acme.Win\Acme.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Wpf", "Acme.Wpf\Acme.Wpf.csproj", "{42D49B3A-5F7B-4242-BC5C-66075496C895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.BizTests1", "Acme.BizTests1\Acme.BizTests1.csproj", "{83625873-2A1D-4C75-9BCE-F00287DCF707}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,10 +47,6 @@ Global
 		{42D49B3A-5F7B-4242-BC5C-66075496C895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42D49B3A-5F7B-4242-BC5C-66075496C895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42D49B3A-5F7B-4242-BC5C-66075496C895}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83625873-2A1D-4C75-9BCE-F00287DCF707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83625873-2A1D-4C75-9BCE-F00287DCF707}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83625873-2A1D-4C75-9BCE-F00287DCF707}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83625873-2A1D-4C75-9BCE-F00287DCF707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

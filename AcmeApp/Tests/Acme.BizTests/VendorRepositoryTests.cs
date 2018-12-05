@@ -12,5 +12,56 @@ namespace Acme.Biz.Tests
     public class VendorRepositoryTests
     {
 
+        [TestMethod()]
+        public void ReturnValueTest()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = 42;
+
+            //Act
+            var actual = repository.ReturnValue<int>("Select * from whatever", 42);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void ReturnValueStringTest()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = "test";
+
+            //Act
+            var actual = repository.ReturnValue<string>("Select * from whatever", "test");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+                {
+                    new Vendor()
+                    {
+                        VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com"
+                    }
+                };
+
+            //Act
+            var actual = repository.Retrieve();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual.ToList());
+        }
     }
 }
