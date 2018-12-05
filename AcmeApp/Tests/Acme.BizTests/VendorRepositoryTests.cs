@@ -63,5 +63,70 @@ namespace Acme.Biz.Tests
             //Assert
             CollectionAssert.AreEqual(expected, actual.ToList());
         }
+
+        [TestMethod()]
+        public void RetrieveWithIteratorTest()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+                {
+                    new Vendor()
+                    {
+                        VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com"
+                    }
+                };
+
+            //Act
+            var vendorIterator = repository.RetrieveWithIterator();
+            foreach (var vendor in vendorIterator)
+            {
+                Console.WriteLine(vendor);
+            }
+
+            var actual = vendorIterator.ToList();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void RetrieveAllTests()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+            {
+                new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Amalgamated Toys", Email = "a@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Toy Blocks Inc", Email = "blocks@abc.com"
+                    },
+                     new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Car Toys", Email = "car@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Toys for Fun", Email = "fun@abc.com"
+                    }
+            };
+
+            //Act
+            var vendors = repository.RetrieveAll();
+            var vendorQuery = from v in vendors
+                              where v.CompanyName.Contains("Toy")
+                              select v;
+
+            //Assert
+            CollectionAssert.AreEqual(expected, vendorQuery.ToList<Vendor>());
+        }
     }
 }
