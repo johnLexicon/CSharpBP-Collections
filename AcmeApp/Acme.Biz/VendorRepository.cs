@@ -11,6 +11,60 @@ namespace Acme.Biz
 
         private List<Vendor> _vendors;
 
+        public IEnumerable<Vendor> RetrieveWithIterator()
+        {
+            this.Retrieve();
+
+            foreach (var vendor in _vendors)
+            {
+                Console.WriteLine($"Vendor id: {vendor.VendorId}");
+                yield return vendor;
+            }
+        }
+
+        public IEnumerable<Vendor> RetrieveAll()
+        {
+            return new List<Vendor>()
+            {
+                new Vendor()
+                    {
+                        VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "EFG Ltd", Email = "efg@efg.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "HIJ AG", Email = "hij@hij.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Amalgamated Toys", Email = "a@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Toy Blocks Inc", Email = "blocks@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Home Products Inc", Email = "home@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Car Toys", Email = "car@abc.com"
+                    },
+                    new Vendor()
+                    {
+                        VendorId = 2, CompanyName = "Toys for Fun", Email = "fun@abc.com"
+                    }
+            };
+        }
+
         public ICollection<Vendor> Retrieve()
         {
             if(_vendors == null)
